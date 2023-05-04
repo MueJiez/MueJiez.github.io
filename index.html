@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {width: 120px;background: #222;}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+	
+	/* time table */
+	table {
+	  font-family: "Montserrat", sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+
+	td, th {
+	  border: 1px solid #dddddd;
+	  text-align: center;
+	  padding: 8px;
+	}
+
+	/* log in */
+	/* Full-width input fields */
+	input[type=text], input[type=password] {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  box-sizing: border-box;
+	}
+
+	/* Set a style for log buttons */
+	.logbutton {
+	  background-color: #04AA6D;
+	  color: white;
+	  padding: 14px 20px;
+	  margin: 8px 0;
+	  border: none;
+	  cursor: pointer;
+	  width: 100%;
+	}
+
+	button:hover {
+	  opacity: 0.8;
+	}
+	
+	/* Set a style for out button */
+	.outbutton .w3-bar-item w3-button w3-padding-large w3-hover-black {
+	  background-color: inherit;
+	  font-family: "Montserrat", sans-serif
+	  color: white;
+	  padding: 14px;
+	  margin: 8px 0;
+	  border: none;
+	  cursor: pointer;
+	  width: 100%;
+	}
+
+	button:hover {
+	  opacity: 0.8;
+	}
+	
+	/* Set a style for sign button */
+	.signbutton {
+	  position: absolute;
+	  top: 7%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: inherit;
+	  color: black;
+	  font-size: 16px;
+	  padding: 16px 30px;
+	  border: none;
+	  cursor: pointer;
+	  border-radius: 5px;
+	  height: 15%;
+	  width: 100%;
+	  opacity: 0.0;
+	}
+	
+	/* Set style for sign1 button */
+	.container .sign1button {
+	  border: none;
+	  background-color: inherit;
+	  color: grey;
+	  font-family: "Montserrat", sans-serif;
+	  padding: 14px 28px;
+	  font-size: 16px;
+	  cursor: pointer;
+	}
+
+	.signbutton:hover {opacity: 0.7;}
+	
+	/* Set style for timetable button */
+	.timebutton {
+	  border: none;
+	  background-color: inherit;
+	  color: grey;
+	  font-family: "Montserrat", sans-serif;
+	  cursor: pointer;
+	}
+
+
+	/* Extra styles for the cancel button */
+	.cancelbtn {
+	  width: auto;
+	  padding: 10px 18px;
+	  background-color: #f44336;
+	  color: white;
+	}
+
+	/* Center the image and position the close button */
+	.imgcontainer {
+	  text-align: center;
+	  margin: 24px 0 12px 0;
+	  position: relative;
+	}
+
+	img.avatar {
+	  width: 40%;
+	  border-radius: 50%;
+	}
+
+	.container {
+	  padding: 16px;
+	}
+	
+	.titext{
+	  padding: 16px;
+	  text-align: center;
+	}
+
+	span.psw {
+	  float: right;
+	  padding-top: 16px;
+	}
+
+	/* The Modal (background) */
+	.modal {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Sit on top */
+	  left: 0;
+	  top: 0;
+	  width: 100%; /* Full width */
+	  height: 100%; /* Full height */
+	  overflow: auto; /* Enable scroll if needed */
+	  background-color: rgb(0,0,0); /* Fallback color */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	  padding-top: 60px;
+	}
+
+	/* Modal Content/Box */
+	.modal-content {
+	  background-color: #222;
+	  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+	  border: 1px solid #888;
+	  width: 50%; /* Could be more or less, depending on screen size */
+	}
+
+	/* The Close Button (x) */
+	.close {
+	  position: absolute;
+	  right: 25px;
+	  top: 0;
+	  color: #fefefe;
+	  font-size: 35px;
+	  font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	  color: red;
+	  cursor: pointer;
+	}
+	
+	/* Add Zoom Animation */
+	.animate {
+	  -webkit-animation: animatezoom 0.6s;
+	  animation: animatezoom 0.6s
+	}
+
+	@-webkit-keyframes animatezoom {
+	  from {-webkit-transform: scale(0)} 
+	  to {-webkit-transform: scale(1)}
+	}
+	  
+	@keyframes animatezoom {
+	  from {transform: scale(0)} 
+	  to {transform: scale(1)}
+	}
+
+	/* Change styles for span and cancel button on extra small screens */
+	@media screen and (max-width: 300px) {
+	  span.psw {
+		 display: block;
+		 float: none;
+	  }
+	  .cancelbtn {
+		 width: 100%;
+	  }
+	}
+
+    </style>
+  </head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif1.gif" style="width:100%">
+  <button class="signbutton" onclick="document.getElementById('id01').style.display='block'" style="width:auto; ">Login</button>
+  
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  <a href="#timetable" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-book w3-xxlarge"></i>
+    <p>TIME TABLE</p>
+  </a>
+  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>GALLERY</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+  <button class="outbutton w3-bar-item w3-button w3-padding-large w3-hover-black" onclick="alert('You have successfully logout')" style="width:100%;"><i class="fa fa-sign-out w3-xxlarge"></i>Logout</button>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+	<a href="#timetable" class="w3-bar-item w3-button" style="width:25% !important">TIME TABLE</a>
+    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">GALLERY</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+	<a href="#setting" class="w3-bar-item w3-button" style="width:25% !important">SETTING</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Mujibuddin Masod.</h1>
+    <p>Fulltime UiTM Student.</p>
+    <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test1.jpeg" alt="boy" class="w3-image" width="992" height="1108">
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">My Name</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>My name is Muhammad Mujibuddin bin Masod, and I am a student at Universiti Teknologi Mara, UiTM, studying Netcentric Computing. I've always had a fascination with technology and computers, which inspired me to pursue this course of study.
+	<br><br>Reading fiction is one of my favourite pastimes. I love escaping into new realms and immersing myself in the lives of interesting folks. Reading also helps me enhance my imagination and creativity, both of which I value in my field of study.
+	<br><br>I have showed a strong work ethic and a passion for information throughout my academic career. I am constantly keen to learn new things and actively seek out opportunities to broaden my skills and knowledge.
+	<br><br>I am keen to put my talents and knowledge to use in the workplace. I'd like to work for a company that shares my enthusiasm for technology and innovation, and where I can contribute my talents and ideas to help the company grow. 
+	Overall, I am committed to my academic and professional goals, and I believe that my hobbies and interests complement my academic efforts, allowing me to maintain a healthy work-life balance.
+    </p>
+
+    <a href="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\resume.png" download="resume"><button class="w3-button w3-light-grey w3-padding-large w3-section">
+      <i class="fa fa-download"></i> Download Resume
+    </button></a>
+    
+    </div>
+    
+  </div>
+  
+  <!-- Time Table Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="timetable">
+    <h2 class="w3-text-light-grey">Time Table</h2>
+    <hr style="width:200px" class="w3-opacity">
+	<h1>CS251-2A</h1>
+
+<table>
+  <tr bgcolor="#FFC6FF">
+    <th bgcolor="#FEFEFE"></th>
+    <th>0800 - 1000</th>
+    <th>1000 - 1200</th>
+    <th>1200 - 1400</th>
+    <th>1400 - 1600</th>
+    <th>1600 - 1800</th>
+  </tr>
+  <tr bgcolor="#FFFFFC">
+    <td bgcolor="#cbf3f0">Monday</td>
+    <td></td>
+    <td bgcolor="#CAFFBF"><button class="timebutton" onclick="document.getElementById('it01').style.display='block'" style="width:auto; ">ICT450</button></td>
+    <td></td>
+    <td></td>
+    <td bgcolor="#FFADAD"><button class="timebutton" onclick="document.getElementById('it02').style.display='block'" style="width:auto; ">MAT421</button></td>
+  </tr>
+  <tr bgcolor="#FFFFFC">
+    <td bgcolor="#cbf3f0">Teusday</td>
+    <td bgcolor="#A0C4FF"><button class="timebutton" onclick="document.getElementById('it03').style.display='block'" style="width:auto; ">CSC574</button></td>
+    <td bgcolor="#BDB2FF"><button class="timebutton" onclick="document.getElementById('it04').style.display='block'" style="width:auto; ">CSC520</button></td>
+    <td></td>
+    <td bgcolor="#CAFFBF"><button class="timebutton" onclick="document.getElementById('it05').style.display='block'" style="width:auto; ">ICT450</button></td>
+    <td></td>
+  </tr>
+  <tr bgcolor="FFFFFC">
+    <td bgcolor="#cbf3f0">Wednesday</td>
+    <td bgcolor="#A0C4FF"><button class="timebutton" onclick="document.getElementById('it06').style.display='block'" style="width:auto; ">CSC574</button></td>
+    <td bgcolor="#FDFFB6"><button class="timebutton" onclick="document.getElementById('it07').style.display='block'" style="width:auto; ">CSC404</button></td>
+    <td></td>
+    <td bgcolor="#BDB2FF"><button class="timebutton" onclick="document.getElementById('it08').style.display='block'" style="width:auto; ">CSC520</button></td>
+    <td></td>
+  </tr>
+  <tr bgcolor="FFFFFC">
+    <td bgcolor="#cbf3f0">Thursday</td>
+    <td bgcolor="#FFADAD"><button class="timebutton" onclick="document.getElementById('it09').style.display='block'" style="width:auto; ">MAT421</button></td>
+    <td></td>
+    <td></td>
+    <td bgcolor="#FFD6A5"><button class="timebutton" onclick="document.getElementById('it10').style.display='block'" style="width:auto; ">STA416</button></td>
+    <td></td>
+  </tr>
+  <tr bgcolor="FFFFFC">
+    <td bgcolor="#cbf3f0">Friday</td>
+    <td bgcolor="#FDFFB6"><button class="timebutton" onclick="document.getElementById('it11').style.display='block'" style="width:auto; ">CSC404</button></td>
+    <td bgcolor="#FFD6A5"><button class="timebutton" onclick="document.getElementById('it12').style.display='block'" style="width:auto; ">STA416</button></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+    <a href="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\timetable.png" download="resume"><button class="w3-button w3-light-grey w3-padding-large w3-section">
+      <i class="fa fa-download"></i>Download Time Table</button></a>
+    
+    </div>
+  
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content" id="photos">
+    <h2 class="w3-text-light-grey">My Gallery</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <video width="100%" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\vid4.webm">
+		</video>
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test4.jpg" style="width:100%">
+		<audio id="so3" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\so3.mp3" type="audio/mpeg">
+		</audio>
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif2.gif" style="width:100%">
+		<audio id="so4" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\so4.mp3" type="audio/mpeg">
+		</audio>
+        <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test7.png" style="width:100%">
+        <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test3.jpg" style="width:100%">
+		<video width="100%" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\vid3.webm">
+		</video>
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif4.gif" style="width:100%">
+		<video width="100%" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\vid8.webm">
+		</video>
+		<video width="100%" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\vid7.webm">
+		</video>
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test8.jpg" style="width:100%">
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif6.gif" style="width:100%">
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test15.jpg" style="width:100%">
+      </div>
+
+      <div class="w3-half">
+        <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test1.jpeg" style="width:100%">
+		<video width="100%" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\vid2.webm">
+		</video>
+        <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test5.jpg" style="width:100%">
+		<audio id="so1" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\so1.mp3" type="audio/mpeg">
+		</audio>
+		<video width="100%" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\vid5.webm">
+		</video>
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif3.gif" style="width:100%">
+        <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test12.jpg" style="width:100%">
+		<audio id="so2" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\so2.mp3" type="audio/mpeg">
+		</audio>
+		<video width="100%" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\vid9.webm">
+		</video>
+        <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test2.jpeg" style="width:100%">
+		<audio id="so5" controls>
+		  <source src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\so5.mp3" type="audio/mpeg">
+		</audio>
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif5.gif" style="width:100%">
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test16.jpg" style="width:100%">
+		<img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\test9.jpg" style="width:100%">
+		
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End Portfolio Section -->
+  </div>
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Contact Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Banting, Selangor</p>
+      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +60 11-2851 7433</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: 2022862448@student.uitm.edu.my
+	  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+	  <a href="https://www.facebook.com/muhammad.mujibudin/"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+	  <a href="https://www.instagram.com/mijipedia?utm_source=qr"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+	  <a href="https://t.me/MujibuddinMasod"><i class="fa fa-telegram w3-hover-opacity"></i></a></p>
+    </div><br>
+	<!-- End Contact Section -->
+  </div>
+ 
+	<!-- Log In -->
+ 
+	<div id="id01" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif1.gif" class="avatar">
+		</div>
+
+		<div class="container">
+		  <label for="uname"><b>Username</b></label>
+		  <input type="text" placeholder="Enter Username" name="uname" required>
+		  
+		  <label for="psw"><b>Password</b></label>
+		  <input type="password" placeholder="Enter Password" name="psw" required>
+			
+		  <button class ="logbutton" type="button" onclick="document.getElementById('id01').style.display='none'">Login</button>
+		  <label>
+			<input type="checkbox" checked="checked" name="remember"> Remember me
+		  </label>
+		</div>
+
+		<div class="container" style="background-color:#222">
+		  <button type="reset" value="Clear" class="cancelbtn">Clear</button>
+		  <button class="container sign1button" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign in instead?</button>
+		  <span class="psw">Forgot <a href="#" onclick="('Your password has been reset')">password?</a></span>
+		</div>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('id01');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="id02" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\gif1.gif" class="avatar">
+		</div>
+
+		<div class="container">
+		  <label for="fname"><b>First Name</b></label>
+		  <input type="text" placeholder="Enter First name" name="fname" required>
+		  
+		  <label for="lname"><b>Last Name</b></label>
+		  <input type="text" placeholder="Enter Last name" name="lname" required>
+		  
+		  <label for="address"><b>Address</b></label>
+		  <input type="text" placeholder="Enter address line 1" name="address" required>
+		  
+		  <label for="address1"><b></b></label>
+		  <input type="text" placeholder="Enter address line 2" name="address1" required>
+		  
+		  <label for="zipcode"><b>Zipcode</b></label>
+		  <input type="text" placeholder="Enter zipcode" name="zipcode" required>
+		  
+		  <label for="State"><b>State</b></label>
+		  <input type="text" placeholder="Enter State" name="State" required>
+		  
+		  <label for="pnum"><b>Phone Number</b></label>
+		  <input type="text" placeholder="Enter Phone number" name="pnum" required>
+		  
+		  <p>Education Background</p>
+		  <input type="checkbox" id="eduback1" name="eduback1" value="SPM">
+		  <label for="eduback1"> SPM</label>
+		  <input type="checkbox" id="eduback2" name="eduback2" value="Diploma">
+		  <label for="eduback2"> Diploma</label>
+		  <input type="checkbox" id="eduback3" name="eduback3" value="Degree">
+		  <label for="eduback3"> Degree</label>
+		  <input type="checkbox" id="eduback4" name="eduback4" value="Master">
+		  <label for="eduback4"> Master</label>
+		  <input type="checkbox" id="eduback5" name="eduback5" value="PHD">
+		  <label for="eduback5"> Degree</label><br>
+		  
+		  <label for="uname1"><b> Username</b></label>
+		  <input type="text" placeholder="Enter Username" name="uname1" required>
+		  
+		  <label for="psw1"><b>Password</b></label>
+		  <input type="password" placeholder="Enter Password" name="psw1" required>
+		  
+		  <label for="psw1"><b>Password</b></label>
+		  <input type="password" placeholder="Enter Password again" name="psw2" required>
+			
+		  <button class ="logbutton" type="button"onclick="document.getElementById('id02').style.display='none'">Login</button>
+		</div>
+
+		<div class="container" style="background-color:#222">
+		  <button type="reset" value="Clear" class="cancelbtn">Clear</button>
+		</div>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('id02');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+	
+	<div id="it01" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it01').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\ict450lab.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>ICT450</h1>
+		  <h2>Database, Design and Development</h2>
+		  <h3>Lab - CS2, MK18</h3>
+		  <p>
+		  Lecturer: DR. Rozianawaty bt Osman<br>
+		  Email: rozianawaty@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it01');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it02" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it02').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\mat421.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>MAT421</h1>
+		  <h2>Calculus I</h2>
+		  <h3>Tutor - CS1, MK06, BK04</h3>
+		  <p>
+		  Lecturer: DR. Nurul Syaza binti Abdul Latif<br>
+		  Email: syazalatif@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it02');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it03" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it03').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\csc574.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>CSC574</h1>
+		  <h2>Dynamic Web Application Development</h2>
+		  <h3>Lab - CS2, MK17</h3>
+		  <p>
+		  Lecturer: Nur Aina Khadijah Binti Adnan<br>
+		  Email: ainakhadijah@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it03');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it04" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it04').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\csc520.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>CSC520</h1>
+		  <h2>Principle Of Operating System</h2>
+		  <h3>Lecture - Online</h3>
+		  <p>
+		  Lecturer: Profesor Madya DR Norhaslinda binti Kamaruddin<br>
+		  Email: nhaslinda@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it04');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it05" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it05').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\ict450.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>ICT450</h1>
+		  <h2>Database, Design and Development</h2>
+		  <h3>Lecture - Online</h3>
+		  <p>
+		  Lecturer: DR. Nor Aziah binti Daud<br>
+		  Email: nor_aziah@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it05');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it06" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it06').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\csc574.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>CSC574</h1>
+		  <h2>Dynamic Web Application Development</h2>
+		  <h3>Lecture - Online</h3>
+		  <p>
+		  Lecturer: Aina Khadijah binti Adnan<br>
+		  Email: ainakhadijah@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it06');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it07" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it07').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\csc404.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>CSC404</h1>
+		  <h2>Programming II</h2>
+		  <h3>Lecture - Online</h3>
+		  <p>
+		  Lecturer: DR. Shakirah binti Hashim<br>
+		  Email: shakirahhashim@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it07');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it08" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it08').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\csc520.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>CSC520</h1>
+		  <h2>Principle Of Operating System</h2>
+		  <h3>Lab - CS2, BK21</h3>
+		  <p>
+		  Lecturer: Profesor Madya DR Norhaslinda binti Kamaruddin<br>
+		  Email: nhaslinda@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it08');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it09" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it09').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\mat421.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>MAT421</h1>
+		  <h2>Calculus I</h2>
+		  <h3>Lecture - Online</h3>
+		  <p>
+		  Lecturer: DR. Nurul Syaza binti Abdul Latif<br>
+		  Email: syazalatif@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it09');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it10" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it10').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\sta416.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>STA416</h1>
+		  <h2>Applied Probability And Statistics</h2>
+		  <h3>Lecture - Online</h3>
+		  <p>
+		  Lecturer: DR. Noor Fadhilah binti Ahmad Radi<br>
+		  Email: noorfadhilah@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it10');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it11" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it11').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\csc404.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>CSC404</h1>
+		  <h2>Programming II</h2>
+		  <h3>Lab - CS2, MK15</h3>
+		  <p>
+		  Lecturer: DR. Shakirah binti Hashim<br>
+		  Email: shakirahhashim@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it11');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+    
+    </div>
+	
+	<div id="it12" class="modal">
+	  
+	  <form class="modal-content animate">
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('it12').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <img src="C:\Users\muham\OneDrive - Deprecate5789\Documents\UiTM\Dynamic Web\assignment1\sta416.png" alt="Avatar" class="avatar">
+		</div>
+
+		<div class="titext">
+		  <h1>STA416</h1>
+		  <h2>Applied Probability And Statistics</h2>
+		  <h3>Tutor - CS2, BK21</h3>
+		  <p>
+		  Lecturer: DR. Noor Fadhilah binti Ahmad Radi<br>
+		  Email: noorfadhilah@uitm.edu.my<br>
+		  </p>
+	  </form>
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('it12');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+	
+	</div>
+  
+<!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
+
+
+ <!-- End footer -->
+</footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
